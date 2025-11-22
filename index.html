@@ -6,6 +6,24 @@
   <title>Crochet med Subiraa – Lekebutikk</title>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
   <style>
+                        /* Balansert mobilvennlig layout – likt uttrykk som PC, men tilpasset små skjermer */
+                        @media (max-width: 700px) {
+                          html, body {
+                            font-size: 13px;
+                          }
+                          header > div[style*="position:absolute;"][style*="left:32px"] img {
+                            height: 28px !important;
+                            max-width: 40vw !important;
+                          }
+                          header > div[style*="position:relative;"][style*="width:100vw"] img {
+                            max-width: 80px !important;
+                            width: 30vw !important;
+                          }
+                          .product-card img {
+                            width: 70vw !important;
+                            max-width: 120px !important;
+                          }
+                        }
                     /* Ekstra mobilvennlig header og logo */
                     @media (max-width: 700px) {
                       header {
@@ -501,8 +519,6 @@
       <div style="position:relative;z-index:2;text-align:center;width:100%;max-width:700px;margin:0 auto;">
         <img src="logony.png" alt="Subiraa hovedlogo" style="max-width:180px;width:40vw;height:auto;margin-bottom:1.2em;box-shadow:0 4px 32px #a07be622;border-radius:1.5em;" />
         <h1 style="font-size:2.7rem;color:var(--lilla);margin-bottom:0.3em;letter-spacing:2px;font-family:'Fredoka',cursive;">Velkommen til Subiraa</h1>
-          <div class="rainbow-text" style="font-size:1.3em;font-weight:700;margin-bottom:0.7em;">Unike, håndlagde kosedyr og gaver – laget med kjærlighet og kreativitet.</div>
-        <div style="font-size:1.25rem;color:var(--lilla);font-weight:500;margin-bottom:0.7em;">Unike, håndlagde kosedyr og gaver – laget med kjærlighet og kreativitet.</div>
       </div>
     </div>
     <div style="position:absolute;right:32px;top:18px;z-index:2;display:flex;align-items:center;gap:1em;">
