@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crochet med Subiraa – Lekebutikk</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+                            /* PC: Vis toppbar, skjul mobilknapper */
+                            @media (min-width: 701px) {
+                              .skr-logo-desktop { display: block !important; }
+                              .cart-bar-desktop, .checkout-btn-desktop { display: flex !important; }
+                              .mobile-cart-row { display: none !important; }
+                              .main-logo { max-width: 320px !important; width: 60vw !important; margin-bottom: 1.2em !important; }
+                            }
+                        /* Balansert mobilvennlig layout – likt uttrykk som PC, men tilpasset små skjermer */
+                        @media (max-width: 700px) {
+                          html, body {
+                            font-size: 13px;
+                          }
+                          /* Fjernet beskjæring av bilder for mobil */
+                          header > div[style*="position:absolute;"][style*="left:32px"] img {
+                            height: auto !important;
+                            max-width: 100vw !important;
+                            width: auto !important;
+                          }
+                          header > div[style*="position:relative;"][style*="width:100vw"] img {
+                            max-width: 100vw !important;
+                            width: auto !important;
+                          }
+                          .product-card img {
+                            width: auto !important;
+                            max-width: 100vw !important;
+                            height: auto !important;
+                          }
+                        }
+                    /* Ekstra mobilvennlig header og logo */
+                    @media (max-width: 700px) {
+                      header {
+                        min-height: unset !important;
+                        height: auto !important;
+                      }
+                      header > div[style*="position:absolute;"][style*="left:32px"] {
+                        left: 50% !important;
+                        top: 12px !important;
+                        transform: translateX(-50%) !important;
+                        z-index: 20 !important;
+                        width: 100vw !important;
+                        display: flex !important;
+                        justify-content: center !important;
+                        align-items: center !important;
+                      }
+                      header > div[style*="position:absolute;"][style*="left:32px"] img {
+                        height: 32px !important;
+                        width: auto !important;
+                        max-width: 80vw !important;
+                        margin: 0 auto !important;
+                        display: block !important;
+                      }
+                      header > div[style*="position:relative;"][style*="width:100vw"] {
+                        height: 180px !important;
+                        min-height: 120px !important;
+                        padding-top: 32px !important;
+                      }
+                      header > div[style*="position:relative;"][style*="width:100vw"] img {
+                        max-width: 220px !important;
+                        width: 70vw !important;
+                        margin-bottom: 0.7em !important;
+                      }
+                      header h1 {
+                        font-size: 1.3em !important;
+                        margin-bottom: 0.2em !important;
+                      }
+                      .rainbow-text {
+                        font-size: 1em !important;
+                      }
+                      .topnav-bar nav {
+                        flex-direction: column !important;
+                        gap: 0.2em !important;
+                        align-items: flex-start !important;
+                        width: 100% !important;
+                      }
+                      .topnav-bar nav a {
+                        width: 100% !important;
+                        font-size: 1em !important;
+                        padding: 0.7em 0.7em !important;
+                      }
+                      .topnav-bar {
+                        min-height: 48px !important;
+                        padding: 0.2em 0.2em !important;
+                      }
+                      .topnav-bar #cart-bar, .topnav-bar #checkout-btn {
+                        font-size: 1em !important;
+                        padding: 0.5em 1em !important;
+                        margin-left: 0.5em !important;
+                      }
+                    }
+                /* Mobilvennlig og ryddig layout */
+                @media (max-width: 700px) {
+                  body, html {
+                    font-size: 16px;
+                    padding: 0;
+                    margin: 0;
+                    overflow-x: hidden;
+                  }
+                  header, main, .footer, footer {
+                    padding-left: 0.5em !important;
+                    padding-right: 0.5em !important;
+                  }
+                  .products {
+                    display: grid !important;
+                    grid-template-columns: 1fr !important;
+                    gap: 2.5em !important;
+                    padding: 0.5em !important;
+                  }
+                  .product-card {
+                    max-width: 98vw !important;
+                    min-width: 0 !important;
+                    margin: 0 auto 2.5em auto !important;
+                    padding: 1.5em 0.7em !important;
+                    border-radius: 1.5em !important;
+                    box-shadow: 0 2px 12px #7b8ee633 !important;
+                  }
+                  .product-card img {
+                    width: 100% !important;
+                    max-width: 380px !important;
+                    height: auto !important;
+                    margin: 0 auto 1em auto !important;
+                    border-radius: 1.2em !important;
+                  }
+                  .product-title {
+                    font-size: 1.18em !important;
+                    font-weight: 700 !important;
+                    margin-bottom: 0.5em !important;
+                  }
+                  .product-price {
+                    font-size: 1.12em !important;
+                    color: #3ed6c1 !important;
+                    margin-bottom: 1em !important;
+                  }
+                  .buy-btn {
+                    font-size: 1.15em !important;
+                    padding: 1em 2em !important;
+                    border-radius: 2em !important;
+                    background: linear-gradient(90deg, #3a8dde 60%, #ffe066 100%) !important;
+                    color: #fff !important;
+                    font-weight: 700 !important;
+                    box-shadow: 0 2px 8px #3ed6c155 !important;
+                  }
+                  .shop-section h1 {
+                    font-size: 1.5em !important;
+                    margin-bottom: 1.2em !important;
+                  }
+                  .page-section, .glass {
+                    max-width: 98vw !important;
+                    padding: 1.2em 0.5em !important;
+                    margin: 1.2em auto !important;
+                  }
+                  /* Fjernet beskjæring av produktbilder for mobil */
+                  .product-card img {
+                    width: auto !important;
+                    max-width: 100vw !important;
+                    height: auto !important;
+                  }
+                  .page-section, .glass {
+                    max-width: 1100px !important;
+                    padding: 2em 1.5em !important;
+                    margin: 2em auto !important;
+                  }
+                  .topnav-bar nav {
+                    flex-direction: column !important;
+                    gap: 0.2em !important;
+                    align-items: flex-start !important;
+                  }
+                  .topnav-bar nav a {
+                    padding: 0.7em 0.7em !important;
+                    font-size: 1.08em !important;
+                    width: 100%;
+                    box-sizing: border-box;
+                  }
+                  .footer, footer {
+                    font-size: 1em !important;
+                    padding: 1.2em 0.5em 1em 0.5em !important;
+                    margin-top: 1.2em !important;
+                    box-shadow: none !important;
+                  }
+                  footer > div, .footer > span, .footer > div {
+                    flex-direction: column !important;
+                    align-items: flex-start !important;
+                    gap: 0.7em !important;
+                    width: 100% !important;
+                  }
+                  footer a, .footer a {
+                    font-size: 1em !important;
+                    word-break: break-all;
+                  }
+                  .animated-blob {
+                    display: none !important;
+                  }
+                  svg, .wave-top {
+                    min-width: 100vw !important;
+                    height: auto !important;
+                  }
+                  .custom-form {
+                    padding: 1em 0.2em !important;
+                    max-width: 98vw !important;
+                  }
+                  .glass {
+                    box-shadow: 0 2px 8px #7b8ee622 !important;
+                  }
+                  .rainbow-text {
+                    font-size: 1.2em !important;
+                  }
+                  .shop-section h1 {
+                    font-size: 2em !important;
+                    margin-bottom: 1.2em !important;
+                  }
+                  .footer span, .footer div {
+                    font-size: 1em !important;
+                  }
+                }
+            /* Glassmorfisme og animasjoner */
+            .glass {
+              background: rgba(255,255,255,0.55);
+              box-shadow: 0 8px 32px 0 rgba(31,38,135,0.18);
+              backdrop-filter: blur(8px);
+              -webkit-backdrop-filter: blur(8px);
+              border-radius: 2em;
+              border: 1.5px solid rgba(123,142,230,0.18);
+              transition: box-shadow 0.3s, background 0.3s;
+            }
+            .glass:hover {
+              box-shadow: 0 12px 48px 0 rgba(31,38,135,0.22);
+              background: rgba(255,255,255,0.75);
+            }
+            .rainbow-text {
+              background: linear-gradient(90deg, #7b8ee6, #3ed6c1, #ffe066, #3a8dde, #7be69b, #7b8ee6);
+              background-size: 200% auto;
+              color: transparent;
+              background-clip: text;
+              -webkit-background-clip: text;
+              animation: rainbow-move 3s linear infinite;
+            }
+            @keyframes rainbow-move {
+              0% { background-position: 0% 50%; }
+              100% { background-position: 100% 50%; }
+            }
+            .animated-blob {
+              position: absolute;
+              border-radius: 50%;
+              opacity: 0.13;
+              filter: blur(2px);
+              z-index: 0;
+              animation: blob-move 12s ease-in-out infinite alternate;
+            }
+            @keyframes blob-move {
+              0% { transform: scale(1) translateY(0); }
+              100% { transform: scale(1.15) translateY(30px); }
+            }
+            .fancy-btn {
+              background: linear-gradient(90deg, #7b8ee6 0%, #3ed6c1 100%);
+              color: #fff;
+              border: none;
+              border-radius: 2em;
+              padding: 1em 2.5em;
+              font-size: 1.15em;
+              font-weight: 700;
+              box-shadow: 0 4px 16px #7b8ee655;
+              cursor: pointer;
+              transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+              letter-spacing: 1px;
+              margin-top: 1em;
+            }
+            .fancy-btn:hover {
+              background: linear-gradient(90deg, #ffe066 0%, #3a8dde 100%);
+              color: #3a8dde;
+              transform: scale(1.08) rotate(-2deg);
+              box-shadow: 0 8px 32px #3ed6c155;
+            }
+            /* Mikrointeraksjoner for produktkort */
+            .product-card {
+              transition: box-shadow 0.2s, transform 0.2s, border 0.2s;
+            }
+            .product-card:hover {
+              box-shadow: 0 16px 48px #3ed6c155;
+              border: 2px solid #3ed6c1;
+              transform: scale(1.04) rotate(-1deg);
+            }
+            /* Subtile animasjoner for seksjoner */
+            .page-section {
+              animation: fadein 1.2s cubic-bezier(.39,.575,.565,1) both;
+            }
+            @keyframes fadein {
+              0% { opacity: 0; transform: translateY(40px); }
+              100% { opacity: 1; transform: translateY(0); }
+            }
+        /* Dekorativ bakgrunn for hovedinnhold */
+        .main-bg-decor {
+          position: fixed;
+          top: 0; left: 0; width: 100vw; height: 100vh;
+          z-index: 0;
+          pointer-events: none;
+        }
+        .decor-blob {
+          position: absolute;
+          border-radius: 50%;
+          opacity: 0.13;
+          filter: blur(2px);
+          z-index: 0;
+        }
+        .decor-line {
+          position: absolute;
+          width: 220px;
+          height: 12px;
+          border-radius: 6px;
+          background: linear-gradient(90deg, #ff0000 0%, #ffe066 100%);
+          opacity: 0.18;
+          transform: rotate(-12deg);
+          z-index: 0;
+        }
+    :root {
+      --main-bg: linear-gradient(135deg, #e6f7fa 0%, #b2e0f7 40%, #7b8ee6 100%);
+      --lilla: #7b8ee6;
+      --turkis: #3ed6c1;
+      --gul: #ffe066;
+      --blaa: #3a8dde;
+      --gronn: #7be69b;
+      --hvit: #fff;
+      --shadow: 0 4px 24px rgba(123,142,230,0.10);
+    }
+    html, body {
+      background: var(--main-bg);
+      font-family: 'Fredoka', 'Quicksand', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      color: var(--lilla);
+      min-height: 100vh;
+      overflow-x: hidden;
+      max-width: 100vw;
+    }
+    body {
+      position: relative;
+    }
+    /* FJERNER BOBLER: Mer profesjonell, minimalistisk bakgrunn */
+    body {
+      background: var(--main-bg);
+    }
+    /* Sticky og moderne toppmeny */
+    .topnav-bar {
+      position: sticky;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      max-width: 100%;
+      background: var(--hvit);
+      box-shadow: 0 2px 16px #a07be622;
+      border-radius: 0 0 2.5em 2.5em;
+      margin: 0 auto 2em auto;
+      padding: 0.3em 0.5em;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+      min-height: 64px;
+    }
+    .topnav-bar nav {
+      display: flex;
+      gap: 2.2em;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+    .topnav-bar nav a {
+      color: var(--lilla);
+      background: none;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 2em;
+      padding: 0.7em 1.7em;
+      font-size: 1.1rem;
+      box-shadow: none;
+      transition: background 0.2s, color 0.2s;
+      letter-spacing: 0.5px;
+    }
+    .topnav-bar nav a.active, .topnav-bar nav a:hover {
+      background: var(--gul);
+      color: var(--lilla);
+      box-shadow: 0 4px 16px #a07be655;
+    }
+    .topnav-bar #cart-bar {
+      margin-left:2em;display:flex;align-items:center;gap:0.5em;cursor:pointer;
+      background: var(--turkis);
+      color: var(--hvit);
+      border-radius: 2em;
+      padding: 0.5em 1.2em;
+      font-weight: 700;
+      box-shadow: 0 2px 8px var(--turkis)33;
+      transition: background 0.2s, box-shadow 0.2s;
+    }
+    .topnav-bar #cart-bar:hover {
+      background: var(--lilla);
+      color: var(--hvit);
+      box-shadow: 0 4px 16px var(--lilla)33;
+    }
+    .topnav-bar #checkout-btn {
+      margin-left:1.5em;
+      background: linear-gradient(90deg, var(--lilla) 60%, var(--gul) 100%);
+      color: var(--hvit);
+      font-weight: 700;
+      border: none;
+      border-radius: 2em;
+      padding: 0.7em 2em;
+      font-size: 1.1rem;
+      box-shadow: 0 2px 8px var(--lilla)33;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      letter-spacing: 1px;
+      cursor: pointer;
+    }
+    .topnav-bar #checkout-btn:hover {
+      background: linear-gradient(90deg, var(--turkis) 60%, var(--gul) 100%);
+      color: var(--lilla);
+      transform: scale(1.07);
+      box-shadow: 0 4px 16px var(--turkis)33;
+    }
+    /* Produktkort - moderne og ekte nettbutikkstil */
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 40px;
+      margin-top: 2.5rem;
+      justify-items: center;
+      align-items: stretch;
+    }
+    .product-card {
+      background: var(--hvit);
+      border-radius: 2em;
+      box-shadow: 0 8px 32px #a07be622;
+      padding: 2.2em 1.2em 1.5em 1.2em;
+      text-align: center;
+      border: 1.5px solid #e0e0e0;
+      max-width: 320px;
+      min-width: 0;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.15s, box-shadow 0.2s, border 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .product-card:hover {
+      transform: translateY(-8px) scale(1.04);
+      box-shadow: 0 12px 32px var(--lilla)33;
+      border: 1.5px solid var(--lilla);
+    }
+    .product-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 1.2em;
+      margin-bottom: 1.2em;
+      border: none;
+      background: #f8fafd;
+      box-shadow: 0 4px 24px #a07be622;
+      transition: transform 0.18s, box-shadow 0.18s;
+      display: block;
+    }
+    .product-card:hover img {
+      transform: scale(1.03) translateY(-2px);
+      box-shadow: 0 8px 32px #a07be655;
+    }
+    .product-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--lilla);
+      margin-bottom: 0.5em;
+      text-shadow: 1px 1px 0 var(--gul);
+      letter-spacing: 0.5px;
+    }
+    .product-price {
+      font-size: 1.08rem;
+      color: var(--turkis);
+      font-weight: 700;
+      margin-bottom: 1.1em;
+    }
+    .buy-btn {
+      background: linear-gradient(90deg, var(--lilla) 60%, var(--gul) 100%);
+      color: var(--hvit);
+      font-weight: 700;
+      border: none;
+      border-radius: 2em;
+      padding: 0.9em 2em;
+      font-size: 1.08rem;
+      cursor: pointer;
+      box-shadow: 0 4px 16px var(--lilla)22;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      margin-top: 0.5em;
+      letter-spacing: 1px;
+    }
+    .buy-btn:hover {
+      background: linear-gradient(90deg, var(--turkis) 60%, var(--gul) 100%);
+      color: var(--lilla);
+      transform: scale(1.08);
+      box-shadow: 0 8px 32px var(--turkis)33;
+    }
+    .footer {
+      text-align: center;
+      color: var(--lilla);
+      font-size: 1.1rem;
+      margin: 48px 0 24px 0;
+      background: #fff8;
+      border-radius: 20px;
+      display: inline-block;
+      padding: 10px 28px;
+      box-shadow: 0 4px 16px var(--lilla)22;
+    }
+    @media (max-width: 900px) {
+      .products { grid-template-columns: 1fr; }
+      .product-card { max-width: 95vw; }
+      /* Fjernet beskjæring av produktbilder for desktop */
+      .product-card img { width: auto; max-width: 100vw; height: auto; }
+      .topnav-bar nav { gap: 0.5em; }
+      .topnav-bar nav a { padding: 0.7em 0.7em; font-size: 1em; }
+      .topnav-bar { border-radius: 0 0 1.2em 1.2em; }
+      .topnav-bar #checkout-btn { padding: 0.7em 1em; font-size: 1em; }
+    }
+  </style>
+</head>
+<body>
+          <div id="deviceSelect" style="position:fixed;z-index:99999;top:0;left:0;width:100vw;height:100vh;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+            <h2 style="font-size:2em;color:#7b8ee6;margin-bottom:1.5em;">Velkommen! Hvordan besøker du siden?</h2>
+            <button onclick="chooseDevice('mobil')" style="font-size:1.3em;padding:1em 2.5em;margin:0.5em 0.5em 1.2em 0.5em;background:linear-gradient(90deg,#3a8dde 60%,#ffe066 100%);color:#fff;border:none;border-radius:2em;font-weight:700;box-shadow:0 2px 12px #3ed6c155;">Jeg er på mobil</button>
+            <button onclick="chooseDevice('pc')" style="font-size:1.3em;padding:1em 2.5em;margin:0.5em;background:linear-gradient(90deg,#7b8ee6 60%,#3ed6c1 100%);color:#fff;border:none;border-radius:2em;font-weight:700;box-shadow:0 2px 12px #7b8ee655;">Jeg er på PC</button>
+          </div>
+        <!-- Flere dekorative blobs for ekstra liv -->
+        <div class="animated-blob" style="width:180px;height:180px;top:60px;left:40vw;background:linear-gradient(135deg,#ffe066,#7b8ee6);"></div>
+        <div class="animated-blob" style="width:120px;height:120px;top:420px;right:10vw;background:linear-gradient(135deg,#3ed6c1,#ffe066);"></div>
+        <div class="animated-blob" style="width:90px;height:90px;bottom:120px;left:20vw;background:linear-gradient(135deg,#3a8dde,#7be69b);"></div>
+        <div class="animated-blob" style="width:140px;height:140px;bottom:60px;right:18vw;background:linear-gradient(135deg,#7b8ee6,#3ed6c1);"></div>
+      <!-- Harmonisk dekor bakgrunn og bølger topp/bunn i samme stil -->
+      <svg style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:0;pointer-events:none;" viewBox="0 0 1440 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="200" cy="120" rx="180" ry="80" fill="#b2e0f7" fill-opacity="0.18"/>
+        <ellipse cx="1240" cy="180" rx="160" ry="90" fill="#7b8ee6" fill-opacity="0.13"/>
+        <ellipse cx="400" cy="700" rx="120" ry="60" fill="#3ed6c1" fill-opacity="0.13"/>
+        <ellipse cx="1100" cy="800" rx="140" ry="70" fill="#ffe066" fill-opacity="0.13"/>
+        <ellipse cx="720" cy="400" rx="300" ry="120" fill="#b2e0f7" fill-opacity="0.10"/>
+        <ellipse cx="900" cy="100" rx="80" ry="40" fill="#3a8dde" fill-opacity="0.10"/>
+        <ellipse cx="200" cy="850" rx="60" ry="30" fill="#3ed6c1" fill-opacity="0.10"/>
+        <ellipse cx="1300" cy="850" rx="60" ry="30" fill="#ffe066" fill-opacity="0.10"/>
+        <ellipse cx="720" cy="870" rx="200" ry="40" fill="#7b8ee6" fill-opacity="0.10"/>
+        <!-- Toppbølge -->
+        <path d="M0,40 Q360,90 720,40 T1440,40 L1440,0 L0,0 Z" fill="#7b8ee6" fill-opacity="0.97"/>
+        <!-- Bunnbølge -->
+        <path d="M0,860 Q360,900 720,860 T1440,860 L1440,900 L0,900 Z" fill="#7b8ee6" fill-opacity="0.97"/>
+      </svg>
+    <!-- FJERNER BOBLER: Ren bakgrunn for et mer eksklusivt og voksent uttrykk -->
+  <header style="position:relative;">
+    <!-- Skrift-logo for PC, skjules på mobil -->
+    <!-- Toppbar med logo til venstre og handlekurv/kasse til høyre -->
+    <div class="header-bar" style="display:flex;align-items:center;justify-content:space-between;position:relative;width:100vw;max-width:100%;padding:0.7em 1.2em 0.2em 1.2em;box-sizing:border-box;z-index:30;">
+      <div class="skr-logo-desktop" style="display:block;">
+        <img src="skrift.png" alt="Subiraa logo" style="height:40px;width:auto;display:block;" />
+      </div>
+      <div class="cart-top-right-bar" style="display:flex;align-items:center;gap:1em;">
+        <div id="cart-bar" class="cart-bar-desktop" style="display:flex;align-items:center;gap:0.5em;cursor:pointer;" onclick="showCart()">
+          <span style="font-size:1.5em;">🛒</span>
+          <span id="cart-count" style="font-weight:700;color:var(--lilla);">0</span>
+          <span id="cart-total" style="font-weight:700;color:var(--turkis);">kr 0</span>
+        </div>
+        <button id="checkout-btn" class="checkout-btn-desktop" onclick="showCart();checkout();" style="background: linear-gradient(90deg, var(--lilla) 60%, var(--gul) 100%);color: var(--hvit);font-weight: 700;border: none;border-radius: 2em;padding: 0.7em 2em;font-size: 1.1rem;box-shadow: 0 2px 8px var(--lilla)33;transition: background 0.2s, transform 0.15s, box-shadow 0.2s;letter-spacing: 1px;cursor: pointer;">Gå til kassa</button>
+      </div>
+    </div>
+    <div style="position:relative;width:100vw;max-width:100%;height:340px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:linear-gradient(120deg,rgba(160,123,230,0.18) 0%,rgba(214,94,164,0.10) 100%);">
+      <div style="position:absolute;inset:0;background:linear-gradient(120deg,rgba(255,255,255,0.92) 60%,rgba(160,123,230,0.10) 100%);z-index:1;"></div>
+      <!-- Nytt SVG-mønster for bakgrunn -->
+      <svg width="100%" height="100%" viewBox="0 0 1200 340" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="heroGrad2" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#a07be6" stop-opacity="0.22"/>
+            <stop offset="100%" stop-color="#bb9dae" stop-opacity="0.13"/>
+          </linearGradient>
+        </defs>
+        <rect x="0" y="0" width="1200" height="340" fill="url(#heroGrad2)"/>
+        <polygon points="0,340 300,40 600,340" fill="#a07be6" fill-opacity="0.10"/>
+        <polygon points="600,340 900,60 1200,340" fill="#d65ea4" fill-opacity="0.10"/>
+        <ellipse cx="900" cy="100" rx="120" ry="40" fill="#fff" fill-opacity="0.10"/>
+        <rect x="400" y="200" width="180" height="60" rx="30" fill="#d65ea4" fill-opacity="0.08"/>
+      </svg>
+      <!-- Hovedlogo midtstilt -->
+      <div style="position:absolute;top:32px;left:0;right:0;z-index:10;text-align:center;width:100%;pointer-events:none;">
+        <img class="main-logo" src="loggo.png" alt="Crochet with Subiraa logo" style="max-width:100vw;width:100vw;height:auto;margin:0 auto;box-shadow:0 4px 32px #a07be622;border-radius:0;pointer-events:auto;display:block;" />
+      </div>
+    <!-- Duplikat handlekurv/kassa-knapp fjernet -->
+        <!-- Fjernet utilsiktet tekst bak logoen -->
+    </div>
+    <div class="topnav-bar">
+      <nav>
+        <a href="#" class="active" onclick="showPage('shop')">Hjem</a>
+        <a href="#" onclick="showPage('about')">Om meg</a>
+        <a href="#" onclick="showPage('services')">Våre tjenester</a>
+        <a href="#" onclick="showPage('custom')">Ditt design</a>
+        <a href="#" onclick="showPage('contact')">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+  <!-- Annonse for Ditt design på forsiden -->
+  <main>
+    <section id="shop" class="shop-section page-section">
+      <h1 style="color:var(--lilla); font-size:2.2rem; text-align:center; margin-bottom: 0.5em; letter-spacing:1px;">Velg din favoritt – kun 99kr!</h1>
+      <!-- Bildene er nå større direkte i produktkortene -->
+      <div class="products">
+                <div class="product-card glass">
+                  <img src="vakker blomst.jpg" alt="Solsikke Bokmerke" style="width:100%;max-width:400px;height:auto;display:block;margin:0 auto 1em auto;" />
+                  <div class="product-title">Solsikke Bokmerke</div>
+                  <div class="product-price">99 kr</div>
+                  <button class="buy-btn" onclick="alert('Send SMS til 416 42 509 for å kjøpe Solsikke Bokmerke!')">Kjøp</button>
+                </div>
+                <div class="product-card glass">
+                  <img src="snømann.jpg" alt="Snømann Ornament" style="width:100%;max-width:400px;height:auto;display:block;margin:0 auto 1em auto;" />
+                  <div class="product-title">Snømann Ornament</div>
+                  <div class="product-price">99 kr</div>
+                  <button class="buy-btn" onclick="alert('Send SMS til 416 42 509 for å kjøpe Snømann Ornament!')">Kjøp</button>
+                </div>
+                <div class="product-card glass">
+                  <img src="juletree.jpg" alt="Juletre Dekorasjon" style="width:100%;max-width:400px;height:auto;display:block;margin:0 auto 1em auto;" />
+                  <div class="product-title">Juletre Dekorasjon</div>
+                  <div class="product-price">99 kr</div>
+                  <button class="buy-btn" onclick="alert('Send SMS til 416 42 509 for å kjøpe Juletre Dekorasjon!')">Kjøp</button>
+                </div>
+                <div class="product-card glass">
+                  <img src="drage.jpg" alt="Drage Figur" style="width:100%;max-width:400px;height:auto;display:block;margin:0 auto 1em auto;" />
+                  <div class="product-title">Drage Figur</div>
+                  <div class="product-price">99 kr</div>
+                  <button class="buy-btn" onclick="alert('Send SMS til 416 42 509 for å kjøpe Drage Figur!')">Kjøp</button>
+                </div>
+                <div class="product-card glass">
+                  <img src="avokado.jpg" alt="Avokado Kosedyr" style="width:100%;max-width:400px;height:auto;display:block;margin:0 auto 1em auto;" />
+                  <div class="product-title">Avokado Kosedyr</div>
+                  <div class="product-price">99 kr</div>
+                  <button class="buy-btn" onclick="alert('Send SMS til 416 42 509 for å kjøpe Avokado Kosedyr!')">Kjøp</button>
+                </div>
+                <div class="product-card glass">
+                  <img src="ananas.jpg" alt="Ananas Stor" style="width:100%;max-width:400px;height:auto;display:block;margin:0 auto 1em auto;" />
+                  <div class="product-title">Ananas Stor</div>
+                  <div class="product-price">99 kr</div>
+                  <button class="buy-btn" onclick="alert('Send SMS til 416 42 509 for å kjøpe Ananas Stor!')">Kjøp</button>
+                </div>
+        <div class="product-card glass">
+          <img src="bunny.jpg" alt="Lilla Kanin" style="width:100%;max-width:400px;height:auto;display:block;margin:0 auto 1em auto;" />
+          <div class="product-title">Lilla Kanin i Snekkerbukse</div>
+          <div class="product-price">99 kr</div>
+          <button class="buy-btn" onclick="alert('Send SMS til 416 42 509 for å kjøpe Lilla Kanin!')">Kjøp</button>
+        </div>
+        <div class="product-card">
+          <img src="cherry.jpg" alt="Kirsebær" style="width:100%;max-width:400px;height:auto;display:block;margin:0 auto 1em auto;" />
+          <div class="product-title">Kirsebær Pynt</div>
+          <div class="product-price">99 kr</div>
+          <button class="buy-btn" onclick="alert('Send SMS til 416 42 509 for å kjøpe Kirsebær Pynt!')">Kjøp</button>
+        </div>
+        <div class="product-card">
+          <img src="hellokitty.jpg" alt="Kuromi Bamse" style="width:100%;max-width:400px;height:auto;display:block;margin:0 auto 1em auto;" />
+          <div class="product-title">Kuromi Bamse</div>
+          <div class="product-price">99 kr</div>
+          <button class="buy-btn" onclick="alert('Send SMS til 416 42 509 for å kjøpe Kuromi Bamse!')">Kjøp</button>
+        </div>
+        <div class="product-card">
+          <img src="jordbær.jpg" alt="Jordbær Bamse" style="width:100%;max-width:400px;height:auto;display:block;margin:0 auto 1em auto;" />
+          <div class="product-title">Jordbær Bamse</div>
+          <div class="product-price">99 kr</div>
+          <button class="buy-btn" onclick="alert('Send SMS til 416 42 509 for å kjøpe Jordbær Bamse!')">Kjøp</button>
+        </div>
+        <div class="product-card">
+          <img src="skilpadde.jpg" alt="Skilpadde" style="width:100%;max-width:400px;height:auto;display:block;margin:0 auto 1em auto;" />
+          <div class="product-title">Blå Skilpadde</div>
+          <div class="product-price">99 kr</div>
+          <button class="buy-btn" onclick="alert('Send SMS til 416 42 509 for å kjøpe Blå Skilpadde!')">Kjøp</button>
+        </div>
+        <div class="product-card">
+          <img src="vannmelon.jpg" alt="Vannmelon" style="width:100%;max-width:400px;height:auto;display:block;margin:0 auto 1em auto;" />
+            <!-- Modal for bildevisning -->
+          <div class="product-title">Vannmelon Skive</div>
+          <div class="product-price">99 kr</div>
+          <button class="buy-btn" onclick="alert('Send SMS til 416 42 509 for å kjøpe Vannmelon Skive!')">Kjøp</button>
+        </div>
+        <div class="product-card">
+          <img src="ananas.jpg" alt="Ananas" style="width:100%;max-width:400px;height:auto;display:block;margin:0 auto 1em auto;" />
+          <div class="product-title">Ananas</div>
+          <div class="product-price">99 kr</div>
+          <button class="buy-btn" onclick="alert('Send SMS til 416 42 509 for å kjøpe Ananas!')">Kjøp</button>
+        </div>
+        <div class="product-card">
+          <img src="bie.jpg" alt="Bie og Jordbær" style="width:100%;max-width:400px;height:auto;display:block;margin:0 auto 1em auto;" />
+          <div class="product-title">Bie & Jordbær</div>
+          <div class="product-price">99 kr</div>
+          <button class="buy-btn" onclick="alert('Send SMS til 416 42 509 for å kjøpe Bie & Jordbær!')">Kjøp</button>
+        </div>
+        <div class="product-card">
+          <img src="blekksprut.jpg" alt="Octopus med hatt" style="width:100%;max-width:400px;height:auto;display:block;margin:0 auto 1em auto;" />
+          <div class="product-title">Octopus med Hatt</div>
+          <div class="product-price">99 kr</div>
+          <button class="buy-btn" onclick="alert('Send SMS til 416 42 509 for å kjøpe Octopus med Hatt!')">Kjøp</button>
+        </div>
+        <div class="product-card">
+          <img src="blåbær.jpg" alt="Blå Bær" style="width:100%;max-width:400px;height:auto;display:block;margin:0 auto 1em auto;" />
+          <div class="product-title">Blåbær Bamse</div>
+          <div class="product-price">99 kr</div>
+          <button class="buy-btn" onclick="alert('Send SMS til 416 42 509 for å kjøpe Blåbær Bamse!')">Kjøp</button>
+        </div>
+                <div class="product-card glass">
+          <img src="blå roser.jpg" alt="Kors med Blomster" style="width:100%;max-width:400px;height:auto;display:block;margin:0 auto 1em auto;" />
+          <div class="product-title">Kors med Blomster</div>
+          <div class="product-price">299 kr</div>
+          <button class="buy-btn" onclick="alert('Send SMS til 416 42 509 for å kjøpe Kors med Blomster!')">Kjøp</button>
+        </div>
+        <div class="product-card glass">
+          <img src="svart og hvit sklilpadde.jpg" alt="Stor Hval Kosedyr" style="width:100%;max-width:400px;height:auto;display:block;margin:0 auto 1em auto;" />
+          <div class="product-title">Stor Hval Kosedyr</div>
+          <div class="product-price">349 kr</div>
+          <button class="buy-btn" onclick="alert('Send SMS til 416 42 509 for å kjøpe Stor Hval Kosedyr!')">Kjøp</button>
+        </div>
+      </div>
+    </section>
+    <section id="custom" class="custom-section page-section" style="display:none;max-width:600px;margin:40px auto 32px auto;text-align:center;">
+      <h2 class="rainbow-text" style="font-size:2.1em;">Ditt design – din fantasi!</h2>
+      <div class="glass" style="margin:0 auto 2em auto;padding:1.5em 1em;max-width:420px;">
+        <p style="color:#3a8dde;font-size:1.13em;line-height:1.7;">
+          Har du en idé, et favorittdyr, en karakter eller noe helt unikt du ønsker deg? Her kan du sende inn akkurat det du drømmer om!<br><br>
+          Fyll ut skjemaet under, last gjerne opp et bilde eller en skisse, og beskriv ønsket ditt så godt du kan. Jeg tar kontakt og sammen lager vi noe helt spesielt – kun for deg!
+        </p>
+      </div>
+      <form class="custom-form" id="customForm" style="background:var(--hvit);border-radius:2rem;box-shadow:0 4px 24px #a07be622;padding:2em 1.5em;display:flex;flex-direction:column;gap:1.2em;align-items:center;max-width:420px;margin:0 auto;">
+          <div class="glass" style="padding:2em 1.5em;width:100%;border-radius:2em;box-shadow:0 4px 24px #7b8ee622;margin-bottom:1.5em;">
+        <div style="width:100%;display:flex;flex-direction:column;align-items:flex-start;gap:0.3em;">
+          <label for="navn" style="color:var(--lilla);font-weight:700;font-size:1.08em;">Navn</label>
+          <input type="text" id="navn" name="navn" required style="width:100%;padding:0.7em 1em;border-radius:1em;border:2px solid var(--turkis);font-size:1.08em;">
+        </div>
+        <div style="width:100%;display:flex;flex-direction:column;align-items:flex-start;gap:0.3em;">
+          <label for="epost" style="color:var(--lilla);font-weight:700;font-size:1.08em;">E-post</label>
+          <input type="email" id="epost" name="epost" required style="width:100%;padding:0.7em 1em;border-radius:1em;border:2px solid var(--turkis);font-size:1.08em;">
+        </div>
+        <div style="width:100%;display:flex;flex-direction:column;align-items:flex-start;gap:0.3em;">
+          <label for="telefon" style="color:var(--lilla);font-weight:700;font-size:1.08em;">Telefonnummer</label>
+          <input type="tel" id="telefon" name="telefon" required pattern="[0-9]{8,}" style="width:100%;padding:0.7em 1em;border-radius:1em;border:2px solid var(--turkis);font-size:1.08em;">
+        </div>
+        <div style="width:100%;display:flex;flex-direction:column;align-items:flex-start;gap:0.3em;">
+          <label for="beskrivelse" style="color:var(--lilla);font-weight:700;font-size:1.08em;">Beskrivelse av ønsket produkt</label>
+          <textarea id="beskrivelse" name="beskrivelse" rows="3" required style="width:100%;padding:0.7em 1em;border-radius:1em;border:2px solid var(--turkis);font-size:1.08em;"></textarea>
+        </div>
+        <div style="width:100%;display:flex;flex-direction:column;align-items:flex-start;gap:0.3em;">
+          <label for="bilde" style="color:var(--lilla);font-weight:700;font-size:1.08em;">Last opp bilde <span style="color:var(--turkis);font-weight:400;">(valgfritt)</span></label>
+          <input type="file" id="bilde" name="bilde" accept="image/*" style="font-size:1em;">
+        </div>
+        <button type="submit" style="margin-top:1.2em;background:linear-gradient(90deg, var(--lilla) 60%, var(--gul) 100%);color:var(--hvit);font-weight:700;border:none;border-radius:2em;padding:1em 2.5em;font-size:1.15em;box-shadow:0 4px 16px var(--lilla)33;transition:background 0.2s,transform 0.15s,box-shadow 0.2s;letter-spacing:1px;">Send til Subiraa</button>
+        <div id="customFormMsg" style="margin-top:1.2em;font-size:1.12em;color:#3a8dde;font-weight:600;display:none;text-align:center;"></div>
+        </div>
+      </form>
+    </section>
+    <section id="about" class="page-section" style="display:none;max-width:700px;margin:40px auto 0 auto;text-align:center;">
+      <h2 class="rainbow-text" style="font-size:2.2em;">Om meg</h2>
+      <div class="glass" style="background:rgba(255,255,255,0.7);border-radius:2em;box-shadow:0 4px 24px #7b8ee622;padding:2em 1.5em;display:inline-block;text-align:left;max-width:480px;margin:0 auto;">
+        <p style="font-size:1.13em;color:#3a8dde;line-height:1.7;">
+          Hei! Jeg heter Subiraa og er 15 år. Jeg har heklet siden jeg var 13, og lager alle produktene selv – med masse kjærlighet, kreativitet og øye for detaljer.<br><br>
+          Hver eneste figur, gave og bestilling er unik. Jeg elsker å skape noe som gir glede, og tar imot alle ønsker – uansett hvor sprø eller kreativ idéen din er!<br><br>
+          Hos meg får du ekte håndverk, personlig service og mulighet til å bestille akkurat det du drømmer om. Takk for at du støtter små, norske gründere!
+        </p>
+      </div>
+    </section>
+    <section id="services" class="page-section" style="display:none;max-width:700px;margin:40px auto 0 auto;text-align:center;">
+      <h2 class="rainbow-text" style="font-size:2.2em;">Våre tjenester</h2>
+      <div class="glass" style="padding:2em 1.5em;margin:1.5em auto 0 auto;max-width:540px;">
+        <ul style="text-align:left;font-size:1.15em;line-height:1.7;color:#3a8dde;font-weight:500;list-style:square inside;">
+          <li>Unike, håndlagde kosedyr, figurer og gaver – alt laget med kjærlighet og kreativitet.</li>
+          <li>Fullt tilpassede bestillinger: Du bestemmer farger, størrelse, uttrykk og stil!</li>
+          <li>Personlig designhjelp – jeg hjelper deg å gjøre idé til virkelighet, uansett hvor spesiell den er.</li>
+          <li>Gaveinnpakning og spesialkort for ekstra glede og overraskelse.</li>
+          <li>Rask og trygg levering, eller henting i Oslo etter avtale.</li>
+          <li>Alltid fokus på mangfold, kvalitet, bærekraft og ekte håndverk.</li>
+        </ul>
+        <div style="margin-top:1.2em;font-size:1.08em;color:#7b8ee6;">Har du en spesiell drøm? <b>Send inn ditt ønske</b> via <span style="color:#3ed6c1;font-weight:700;">Ditt design</span> – jeg lager alt ut ifra dine ideer!</div>
+      </div>
+    </section>
+    <section id="contact" class="page-section" style="display:none;max-width:700px;margin:40px auto 0 auto;text-align:center;">
+      <h2 class="rainbow-text" style="font-size:2.1em;">Kontakt</h2>
+      <div class="glass" style="background:rgba(255,255,255,0.7);border-radius:2em;box-shadow:0 4px 24px #7b8ee622;padding:2em 1.5em;display:inline-block;text-align:left;max-width:440px;margin:0 auto;">
+        <div style="margin-bottom:1em;font-size:1.13em;color:#3a8dde;">
+          <strong>Telefon:</strong> <a href="tel:41642509" style="color:var(--turkis);text-decoration:none;font-weight:700;">416 42 509</a><br>
+          <strong>Instagram:</strong> <a href="https://instagram.com/crochet_with_subi" target="_blank" style="color:var(--lilla);text-decoration:none;font-weight:700;">@crochet_with_subi</a><br>
+          <strong>Åpningstider:</strong> Man–Fre 16–20, Lør 12–16<br>
+          <strong>Adresse:</strong> Oslo, Norge (henting etter avtale)<br>
+          <strong>Send SMS:</strong> <a href="sms:41642509" style="color:var(--gul);text-decoration:none;font-weight:700;">416 42 509</a>
+        </div>
+          <div style="font-size:1.05em;color:#7b8ee6;">Ta kontakt for spørsmål, spesialbestillinger eller bare for å si hei! Jeg svarer alltid så fort jeg kan.</div>
+      </div>
+    </section>
+  </main>
+  <div class="footer">
+    &copy; 2025 Crochet med Subiraa. Alle rettigheter reservert.<br>
+    <span style="color:#3a8dde;font-size:1.05em;">Telefon: <a href="tel:41642509" style="color:var(--turkis);text-decoration:none;font-weight:700;">416 42 509</a> &nbsp;|&nbsp; Instagram: <a href="https://instagram.com/crochet_with_subi" target="_blank" style="color:var(--lilla);text-decoration:none;font-weight:700;">@crochet_with_subi</a></span>
+  </div>
+  <div id="cart-modal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:#0008;z-index:1000;justify-content:center;align-items:center;">
+    <div style="background:var(--hvit);border-radius:2em;box-shadow:0 8px 32px #a07be622;padding:2em 2em 1.5em 2em;max-width:95vw;width:400px;">
+      <h2 style="color:var(--lilla);margin-top:0;">Handlekurv</h2>
+      <div id="cart-items"></div>
+      <div style="margin-top:1.5em;font-weight:700;color:var(--turkis);">Total: <span id="cart-modal-total">kr 0</span></div>
+      <div style="margin-top:2em;display:flex;gap:1em;justify-content:flex-end;">
+        <button onclick="closeCart()" style="background:var(--rosa);color:var(--hvit);border:none;border-radius:1em;padding:0.7em 1.5em;font-weight:700;">Lukk</button>
+        <button onclick="checkout()" style="background:linear-gradient(90deg, var(--lilla) 60%, var(--gul) 100%);color:var(--hvit);border:none;border-radius:1em;padding:0.7em 1.5em;font-weight:700;">Gå til betaling</button>
+        <button onclick="closeCart();showPage('shop');" style="background:var(--turkis);color:var(--hvit);border:none;border-radius:1em;padding:0.7em 1.5em;font-weight:700;">Tilbake til butikk</button>
+      </div>
+      <div id="checkout-modal" style="display:none;margin-top:2em;">
+        <h3 style="color:var(--lilla);margin-bottom:1em;">Velg betalingsmåte</h3>
+        <button onclick="payShipping()" style="background:var(--turkis);color:var(--hvit);border:none;border-radius:1em;padding:0.7em 1.5em;font-weight:700;margin-right:1em;">Betal med frakt (kr 100)</button>
+        <button onclick="payVipps()" style="background:var(--gul);color:var(--lilla);border:none;border-radius:1em;padding:0.7em 1.5em;font-weight:700;">Vipps for henting</button>
+        <button onclick="closeCart();showPage('shop');" style="background:var(--turkis);color:var(--hvit);border:none;border-radius:1em;padding:0.7em 1.5em;font-weight:700;margin-top:1em;">Tilbake til butikk</button>
+      </div>
+    </div>
+  </div>
+  <script>
+            // Enhet-velger: spør før nettsiden vises
+            function chooseDevice(type) {
+              if(type === 'mobil') {
+                document.body.classList.add('mobil-visning');
+              } else {
+                document.body.classList.remove('mobil-visning');
+              }
+              document.getElementById('deviceSelect').style.display = 'none';
+            }
+            // Skjul alt annet til valg er gjort
+            window.addEventListener('DOMContentLoaded', function() {
+              document.getElementById('deviceSelect').style.display = 'flex';
+              document.body.classList.remove('mobil-visning');
+            });
+        // Flytt handlekurv og kassa-knapp til mobil-rad under logo
+        window.addEventListener('DOMContentLoaded', function() {
+          // Mobil: flytt knapper til mobil-rad i cart-top-right
+          if(window.innerWidth <= 700) {
+            var cartBar = document.getElementById('cart-bar');
+            var checkoutBtn = document.getElementById('checkout-btn');
+            var mobileRow = document.querySelector('.mobile-cart-row');
+            if(cartBar && checkoutBtn && mobileRow) {
+              cartBar.style.display = 'none';
+              checkoutBtn.style.display = 'none';
+              // Lag små knapper for mobil
+              var miniCart = document.createElement('button');
+              miniCart.innerHTML = '🛒';
+              miniCart.style.background = 'linear-gradient(90deg, var(--lilla) 60%, var(--gul) 100%)';
+              miniCart.style.color = 'var(--hvit)';
+              miniCart.style.border = 'none';
+              miniCart.style.borderRadius = '1.5em';
+              miniCart.style.padding = '0.5em 1.1em';
+              miniCart.style.fontSize = '1.5em';
+              miniCart.style.boxShadow = '0 2px 8px var(--lilla)33';
+              miniCart.style.cursor = 'pointer';
+              miniCart.onclick = showCart;
+              var miniCheckout = document.createElement('button');
+              miniCheckout.textContent = 'Kasse';
+              miniCheckout.style.background = 'linear-gradient(90deg, var(--lilla) 60%, var(--gul) 100%)';
+              miniCheckout.style.color = 'var(--hvit)';
+              miniCheckout.style.border = 'none';
+              miniCheckout.style.borderRadius = '1.5em';
+              miniCheckout.style.padding = '0.5em 1.1em';
+              miniCheckout.style.fontSize = '1em';
+              miniCheckout.style.boxShadow = '0 2px 8px var(--lilla)33';
+              miniCheckout.style.cursor = 'pointer';
+              miniCheckout.onclick = function() { showCart(); checkout(); };
+              mobileRow.appendChild(miniCart);
+              mobileRow.appendChild(miniCheckout);
+            }
+          } else {
+            // PC: vis toppbar og knapper
+            var cartBar = document.getElementById('cart-bar');
+            var checkoutBtn = document.getElementById('checkout-btn');
+            if(cartBar) cartBar.style.display = 'flex';
+            if(checkoutBtn) checkoutBtn.style.display = 'inline-block';
+          }
+        });
+    // Handlekurv-funksjonalitet
+    const products = [
+      { title: 'Lilla Kanin i Snekkerbukse', price: 99, img: 'bunny.jpg' },
+      { title: 'Kirsebær Pynt', price: 99, img: 'cherry.jpg' },
+      { title: 'Kuromi Bamse', price: 99, img: 'hellokitty.jpg' },
+      { title: 'Jordbær Bamse', price: 99, img: 'bie.jpg' },
+      { title: 'Blå Skilpadde', price: 99, img: 'skilpadde.jpg' },
+      { title: 'Vannmelon Skive', price: 99, img: 'vannmelon.jpg' },
+      { title: 'Ananas', price: 99, img: 'ananas.jpg' },
+      { title: 'Bie & Jordbær', price: 99, img: 'bie.jpg' },
+      { title: 'Octopus med Hatt', price: 99, img: 'blekksprut.jpg' },
+      { title: 'Blåbær Bamse', price: 99, img: 'blåbær.jpg' }
+    ];
+    let cart = [];
+    function addToCart(idx) {
+      cart.push(products[idx]);
+      updateCartBar();
+    }
+    function updateCartBar() {
+      document.getElementById('cart-count').textContent = cart.length;
+      const total = cart.reduce((sum, p) => sum + p.price, 0);
+      document.getElementById('cart-total').textContent = 'kr ' + total;
+      if(document.getElementById('cart-modal-total'))
+        document.getElementById('cart-modal-total').textContent = 'kr ' + total;
+    }
+    function showCart() {
+      const modal = document.getElementById('cart-modal');
+      modal.style.display = 'flex';
+      const itemsDiv = document.getElementById('cart-items');
+      if(cart.length === 0) {
+        itemsDiv.innerHTML = '<em>Handlekurven er tom.</em>';
+      } else {
+        itemsDiv.innerHTML = cart.map((p,i) => `<div style='display:flex;align-items:center;gap:1em;margin-bottom:0.7em;'><img src='${p.img}' alt='' style='width:40px;height:40px;border-radius:50%;border:2px solid var(--turkis);'> <span style='flex:1;'>${p.title}</span> <span style='color:var(--turkis);font-weight:700;'>kr ${p.price}</span> <button onclick='removeFromCart(${i})' style='background:var(--rosa);color:var(--hvit);border:none;border-radius:0.7em;padding:0.2em 0.8em;font-weight:700;margin-left:0.5em;'>X</button></div>`).join('');
+      }
+      updateCartBar();
+    }
+    function closeCart() {
+      document.getElementById('cart-modal').style.display = 'none';
+    }
+    function removeFromCart(idx) {
+      cart.splice(idx,1);
+      showCart();
+      updateCartBar();
+    }
+    function checkout() {
+      document.getElementById('checkout-modal').style.display = 'block';
+    }
+    function payShipping() {
+      const total = cart.reduce((sum, p) => sum + p.price, 0) + 100;
+      alert('Du har valgt frakt. Total å betale: kr ' + total + '. (Betalingsløsning kan implementeres her)');
+      // Her kan du legge til ekte betalingsløsning for frakt
+    }
+    function payVipps() {
+      const total = cart.reduce((sum, p) => sum + p.price, 0);
+      let sms = 'Bestilling via nettsiden:\n';
+      cart.forEach(p => sms += '- ' + p.title + ' (kr ' + p.price + ')\n');
+      sms += 'Total: kr ' + total + '\nKunde ønsker henting og betaler via Vipps.';
+      window.location.href = 'sms:41642509?body=' + encodeURIComponent(sms);
+      setTimeout(function() {
+        window.open('https://www.vipps.no/', '_blank');
+      }, 1000);
+    }
+    // Koble Kjøp-knappene til handlekurv
+    window.addEventListener('DOMContentLoaded',()=>{
+      document.querySelectorAll('.buy-btn').forEach((btn,i)=>{
+        btn.onclick = ()=>addToCart(i);
+      });
+    });
+    function showPage(page) {
+      document.querySelectorAll('.page-section').forEach(sec => sec.style.display = 'none');
+      if(page === 'shop') document.getElementById('shop').style.display = '';
+      if(page === 'custom') document.getElementById('custom').style.display = '';
+      if(page === 'about') document.getElementById('about').style.display = '';
+      if(page === 'services') document.getElementById('services').style.display = '';
+      if(page === 'contact') document.getElementById('contact').style.display = '';
+      document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+      document.querySelectorAll('nav a').forEach(a => {
+        if ((page === 'shop' && a.textContent.includes('Hjem')) ||
+            (page === 'about' && a.textContent.includes('Om oss')) ||
+            (page === 'services' && a.textContent.includes('tjenester')) ||
+            (page === 'custom' && a.textContent.includes('Ditt design')) ||
+            (page === 'contact' && a.textContent.includes('Kontakt'))) {
+          a.classList.add('active');
+        }
+      });
+    }
+    showPage('shop');
+    document.getElementById('customForm').onsubmit = function(e) {
+      e.preventDefault();
+      document.getElementById('customForm').reset();
+      var msg = document.getElementById('customFormMsg');
+      msg.textContent = 'Takk for din henvendelse! Subiraa vil ta kontakt med deg så snart som mulig.';
+      msg.style.display = 'block';
+    }
+  </script>
+  <svg class="wave-top" viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#3ed6c1"/></svg>
+  <footer style="background: linear-gradient(90deg, #3ed6c1 60%, #ffe066 100%); color: #3a8dde; text-align: center; padding: 2.5em 1em 2em 1em; font-size: 1.25em; margin-top: 2.5em; border-top: 3px solid #7b8ee6; box-shadow: 0 0 32px #7b8ee622;">
+    <p style="margin:0 0 1.2em 0;font-size:1.35em;font-weight:700;letter-spacing:0.5px;">Vil du ha noe helt eget?</p>
+    <span style="font-size:1.1em;">Gå inn på <a href="#" onclick="showPage('custom');window.scrollTo(0,0);return false;" style="color: #fff; background: linear-gradient(90deg, #3a8dde 60%, #3ed6c1 100%); padding: 0.6em 2em; border-radius: 2em; font-weight: bold; text-decoration: none; box-shadow: 0 2px 12px #3ed6c155; font-size:1.1em; display:inline-block; transition: background 0.2s;">Ditt design</a> – vi lager alt ut ifra dine ønsker og ideer!</span><br>
+    <span style="font-size:1em; color:#3a8dde; display:block; margin-top:0.7em;">Trykk på <b>Ditt design</b> for å sende inn ditt ønske.</span>
+  </footer>
+    <!-- Dekorativ bølge og sirkler nederst på siden -->
+    <footer style="background: #f8fafd; color: #3a8dde; border-top: 3px solid #7b8ee6; box-shadow: 0 0 32px #7b8ee622; margin-top: 3em; padding: 2.5em 0 0.5em 0;">
+      <div style="max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;gap:2.5em 3em;justify-content:space-between;align-items:flex-start;padding:0 2em 2em 2em;">
+        <div class="animated-blob" style="width:120px;height:120px;bottom:10px;left:2vw;background:linear-gradient(135deg,#ffe066,#3ed6c1);"></div>
+        <div class="animated-blob" style="width:80px;height:80px;bottom:30px;right:4vw;background:linear-gradient(135deg,#7b8ee6,#ffe066);"></div>
+        <div style="flex:2;min-width:220px;">
+          <div style="font-size:1.35em;font-weight:700;margin-bottom:0.5em;letter-spacing:0.5px;">Fairhire</div>
+          <div style="font-size:1.1em;margin-bottom:1.2em;">Kompetanse foran fordommer. Vi skaper mangfoldige og vellykkede team.</div>
+        </div>
+        <div style="flex:1;min-width:180px;">
+          <div style="font-weight:700;margin-bottom:0.7em;">Hurtiglenker</div>
+          <div style="display:flex;flex-direction:column;gap:0.3em;">
+            <a href="#" onclick="showPage('about');return false;" style="color:#3a8dde;text-decoration:none;">Om oss</a>
+            <a href="#" onclick="showPage('services');return false;" style="color:#3a8dde;text-decoration:none;">Våre tjenester</a>
+            <a href="#" onclick="showPage('about');return false;" style="color:#3a8dde;text-decoration:none;">Hvorfor velge oss</a>
+            <a href="#" onclick="showPage('contact');return false;" style="color:#3a8dde;text-decoration:none;">Kontakt</a>
+          </div>
+        </div>
+        <div style="flex:1;min-width:180px;">
+          <div style="font-weight:700;margin-bottom:0.7em;">Kontakt</div>
+          <div style="margin-bottom:0.3em;">Telefon: <a href="tel:41642509" style="color:#3a8dde;text-decoration:none;font-weight:700;">416 42 509</a></div>
+          <div style="margin-bottom:0.3em;">Instagram: <a href="https://instagram.com/crochet_with_subi" target="_blank" style="color:#3a8dde;text-decoration:none;font-weight:700;">@crochet_with_subi</a></div>
+        </div>
+      </div>
+      <div style="max-width:1100px;margin:0 auto;padding:0 2em 0.5em 2em;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;font-size:0.98em;">
+        <div>© 2025 Fairhire. Alle rettigheter reservert.</div>
+        <div style="display:flex;gap:1.2em;align-items:center;">
+          <a href="#" style="color:#3a8dde;text-decoration:none;">Vilkår for bruk</a>
+            <span style="margin-left:2em;font-size:1.1em;opacity:0.7;">Laget med kjærlighet og kreativitet av Subiraa 💖</span>
+          <span style="font-size:1.2em;opacity:0.5;">•</span>
+          <a href="#" style="color:#3a8dde;text-decoration:none;">Personvern</a>
+          <span style="font-size:1.2em;opacity:0.5;">•</span>
+          <a href="#" style="color:#3a8dde;text-decoration:none;">Informasjonskapsler</a>
+        </div>
+      </div>
+    </footer>
+  <script>
+  </script>
+</body>
+</html>
